@@ -1,53 +1,40 @@
 ---
-# try also 'default' to start simple
-theme: seriph
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
-background: https://source.unsplash.com/collection/94734566/1920x1080
-# apply any windi css classes to the current slide
-class: 'text-center'
-# https://sli.dev/custom/highlighters.html
+# Global Config
+theme: default
 highlighter: shiki
-# show line numbers in code blocks
+titleTemplate: '%s'
 lineNumbers: false
-# some information about the slides, markdown enabled
-info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
-# persist drawings in exports and build
 drawings:
   persist: false
-# use UnoCSS
 css: unocss
+
+# Slide Config
+title: Location, Origin, ContentWindow
+layout: cover
+background: https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?auto=format&fit=crop&w=1920&monochrome=4af
+class: text-center
 ---
 
-# Welcome to Slidev
+## ~~Location, Location, Location~~
+## `Location`, `Origin`, `ContentWindow`
+<style>
+h2 {
+  code { @apply text-lg text-teal-500 dark:text-teal-400; }
+  code:nth-child(2) { @apply text-yellow-500 dark:text-yellow-400; }
+  code:nth-child(3) { @apply text-rose-500 dark:text-rose-400; }
+}
+</style>
 
-Presentation slides for developers
-
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
-  </span>
-</div>
+An exercise in coding through real estate bureaucracy
 
 <div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub"
-    class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
+  <Button @click="$slidev.nav.next" />
 </div>
 
 <!--
 The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
 -->
 
----
 
 # What is Slidev?
 
