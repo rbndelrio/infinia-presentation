@@ -440,21 +440,25 @@ Custom communication layer for Vue-bound iFrames
 ---
 
 # Going Deeper (pt. 1)
+IDX Wrapper Content
+
 <v-click>
 
 ```js
-// somewhere in the iframe's script tags
+// somewhere in the IDX Wrapper's script tags
 
+// 1. Conditionally apply class based on whether it's actually an iframe
 const root = window.self === window.top
 document.documentElement.classList.add('app-' + root ? 'root' : 'frame')
+
 function frameSetup () {
-    // 1. send initial data burst to parent
+  // 2. send initial data burst to parent
   window.parent.postMessage(initialData, '*')
 
-  // 2. Use Proxy for reporting changes with Vue-esque reactivity model
+  // 3. Use Proxy for reporting changes with Vue-esque reactivity model
   const state = new Proxy({ size, url, status },  proxyReportingConfig)
 
-  // 3. Live document size updates with ResizeObserver
+  // 4. Live document size updates with ResizeObserver
   const sizeWatcher = new ResizeObserver((entries) => {}
 
   // ...continued
@@ -465,45 +469,49 @@ function frameSetup () {
 ---
 
 # Going Deeper (pt. 2)
+IDX Wrapper Content
 
 ```js
 // somewhere in the iframe's script tags
 
 function moreFrameSetup () {
 
-  // 4. Create message event handler to allow execution of some actions
+  // 5. Create message event handler to allow execution of some actions
   const actions = {
     'css:inject': css => appendCss(css, true),
     'stylesheet:inject': src => appendCss(src, false),
   }
 
-  // 5. Fixing IDX-injected content
+  // 6. Fixing IDX-injected content
   fixInsecureLinks() // force all links to use HTTPS
   fixPageActions()   // route form submissions to HTTPS
   purifySrcs()       // remove certain redundant libraries
 
-  // 6. Page-specific data reporting
+  // 7. Page-specific data reporting
   getIdxPageInfo()
 
-  // 7. Proactive page navigation reporting
+  // 8. Proactive page navigation reporting
   document.addEventListener('click', (e) => {})
 }
 ```
 
 ---
 
-# Bonus goodies
+# Bonus Round
+
+<v-clicks>
+
 - Custom build system for the iframe HTML wrapper
 
   ```json
-  {
-    "scripts": {
+  { "scripts": {
       "build:idx": "NUXT_ENV_IDX=true NUXT_HOST='https://domain.com' nuxt generate --target='static'",
-    }
-  }
+  } }
   ```
 - Advanced page type prediction using query parameter and past states
 - Custom search bar that routes to different IDX search endpoints
 - WordPress integration for featured properties
 - WPGraphQL abstraction layer page content
 - Custom REST endpoints too!
+- 1k lines of CSS to override the default theme
+</v-clicks>
