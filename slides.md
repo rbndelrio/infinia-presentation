@@ -439,29 +439,43 @@ Custom communication layer for Vue-bound iFrames
 
 ---
 
-# Going Deeper
+# Going Deeper (pt. 1)
 <v-click>
 
-```js {monaco} {maxHeight:10}
+```js
 // somewhere in the iframe's script tags
 
 const root = window.self === window.top
 document.documentElement.classList.add('app-' + root ? 'root' : 'frame')
 function frameSetup () {
-  // 1. send initial data burst to parent
+    // 1. send initial data burst to parent
   window.parent.postMessage(initialData, '*')
 
   // 2. Use Proxy for reporting changes with Vue-esque reactivity model
   const state = new Proxy({ size, url, status },  proxyReportingConfig)
 
-  // 3. Create message event handler to allow execution of some actions
+  // 3. Live document size updates with ResizeObserver
+  const sizeWatcher = new ResizeObserver((entries) => {}
+
+  // ...continued
+}
+```
+</v-click>
+
+---
+
+# Going Deeper (pt. 2)
+
+```js
+// somewhere in the iframe's script tags
+
+function moreFrameSetup () {
+
+  // 4. Create message event handler to allow execution of some actions
   const actions = {
     'css:inject': css => appendCss(css, true),
     'stylesheet:inject': src => appendCss(src, false),
   }
-
-  // 4. Live document size updates with ResizeObserver
-  const sizeWatcher = new ResizeObserver((entries) => {}
 
   // 5. Fixing IDX-injected content
   fixInsecureLinks() // force all links to use HTTPS
@@ -475,8 +489,6 @@ function frameSetup () {
   document.addEventListener('click', (e) => {})
 }
 ```
-</v-click>
-
 
 ---
 
