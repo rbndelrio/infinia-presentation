@@ -392,6 +392,15 @@ Impact on UX
 - gaps in history & state tracking
 </v-clicks>
 
+---
+layout: center
+---
+
+<div class="text-center">Demo Time!</div>
+<a href="https://mgsgrouprealestate.com/" target="_blank">
+  <img src="assets/screenshot.png" class="w-128 rounded shadow" />
+</a>
+
 
 ---
 layout: two-cols
