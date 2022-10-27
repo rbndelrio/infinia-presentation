@@ -14,16 +14,8 @@ layout: cover
 background: https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?auto=format&fit=crop&w=1920&monochrome=4af
 class: text-center
 ---
-
-## ~~Location, Location, Location~~
-## `Location`, `Origin`, `ContentWindow`
-<style>
-h2 {
-  code { @apply text-lg text-teal-500 dark:text-teal-400; }
-  code:nth-child(2) { @apply text-yellow-500 dark:text-yellow-400; }
-  code:nth-child(3) { @apply text-rose-500 dark:text-rose-400; }
-}
-</style>
+# ~~Location, Location, Location~~
+# `location`, `origin`, `contentWindow`
 
 An exercise in coding through real estate bureaucracy
 
@@ -31,360 +23,475 @@ An exercise in coding through real estate bureaucracy
   <Button @click="$slidev.nav.next" />
 </div>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
-
-
-# What is Slidev?
-
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - theme can be shared and used with npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export into PDF, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - anything possible on a webpage
-
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
-
 <style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
+/* Make it pretty */
+.slidev-layout h1 {
+  &:first-child { margin-bottom: 0 }
+  code { @apply text-4xl text-teal-500 dark:text-teal-400 }
+  code:nth-child(2) { @apply text-orange-500 dark:text-orange-400 }
+  code:nth-child(3) { @apply text-rose-500 dark:text-rose-400 }
+  + p { @apply text-orange-300  opacity-100 text-shadow }
 }
 </style>
-
 <!--
-Here is another comment.lkjlkj
+  - Self-intro ~1m
+  - it's a story of love
+  - and discovery
+  - and a little improvising
 -->
 
 ---
-
-# Navigation
-
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
-
-### Keyboard Shortcuts
-
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
-
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
-
----
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
+layout: two-cols
+clicks: 10
+class: m-auto
 ---
 
-# Code
+# The Client
 
-Use code snippets and get the highlighting directly![^1]
+<v-click>
 
-```ts {all|2|1-6|9|all}
-interface User {
-  id: number
-  firstName: string
-  lastName: string
-  role: string
-}
+MGS Group
+</v-click>
 
-function updateUser(id: number, update: User) {
-  const user = getUser(id)
-  const newUser = { ...user, ...update }
-  saveUser(id, newUser)
-}
-```
+<v-clicks at="3">
 
-<arrow v-click="3" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" />
+- Luxury Real Estate in Boston
+- Low volume, high value
+- Old site is slow
+- Familiar & Comfortable in WordPress
+</v-clicks>
+<v-clicks at="8">
 
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
+- Fragmented listings experience
+</v-clicks>
 
-<style>
-.footnotes-sep {
-  @apply mt-20 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
+::right::
 
----
+# The Ask
+<v-click at="2">
 
-# Components
+New Site Build
+</v-click>
 
-<div grid="~ cols-2 gap-4">
-<div>
+<v-clicks at="3">
 
-You can use Vue components directly inside your slides.
+- Beautiful (already designed! 🎨)
+- More dynamic & seamless UX (Vue 💚)
+- Faster (Edge caching 🏎💨)
+</v-clicks>
+<v-clicks at="7">
 
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
+- ...keep WordPress 🤷‍♂️
 
-```html
-<Counter :count="10" />
-```
+</v-clicks>
+<v-clicks at="9">
 
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
+- <span :class="$slidev.nav.clicks > 9 ? 'text-orange-500 dark:text-orange-400 animate-pulse' : ''">Unified MLS Listings & Search</span>
+</v-clicks>
 
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-<!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
--->
-
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="-t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
-
----
-preload: false
----
-
-# Animations
-
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
-
-```html
-<div
+<!-- <div
+  v-if="$slidev.nav.currentPage === 7"
   v-motion
   :initial="{ x: -80 }"
   :enter="{ x: 0 }">
   Slidev
-</div>
-```
-
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
+</div> -->
 
 ---
-
-# LaTeX
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
-
-<br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
-
+title: Context
+layout: intro
 ---
 
-# Diagrams
+## Quick Rundown on MLS
 
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
+<v-clicks>
 
-<div class="grid grid-cols-3 gap-10 pt-4 -mb-6">
+**Easy Stuff: Terminology**
+- **MLS** (Multiple Listings Service) - geographically-bound organization that maintains a database of real estate listings
+- **Realtor**<sup>&reg;</sup> - a real estate broker and member of the National Association of Realtors (**NAR**)
+- **IDX** (internet data exchange) - a data syndication agreement granted by an MLS, managed by the NAR
 
-```mermaid {scale: 0.5}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
+**Hard Mode: Our Main Characters**
+</v-clicks>
 
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
+<v-clicks>
 
-```plantuml {scale: 0.7}
-@startuml
+- **MGS Group** LLC - The client in question, a real estate brokerage firm operating primarily the Boston area
+- **MLS PIN** Inc. - The MLS representing Massachusetts and other parts of New England
+- **IDX Broker** LLC - service that acts as a middleman for MLSes, allowing real estate firms to display listings to end users without the overhead of licensing and data management
+</v-clicks>
 
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
+<style>
+  li b, li strong { @apply text-orange-500 }
+</style>
 
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
-</div>
-
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
 
 ---
-src: ./pages/multiple-entries.md
-hide: false
----
-
----
-layout: center
 class: text-center
 ---
 
-# Learn More
+## Who, What, and Where
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+
+<div class="mt-12" v-click>
+
+```mermaid {securityLevel: 'loose', scale: 0.8, flowchart: { nodeSpacing: 1 }, themeCSS: '.cluster-label .nodeLabel { position: relative; top: -5px }' }
+flowchart
+    %% agt["fas:fa-user-tie\n Agent/Realtor®"]
+    %% mgs["fas:fa-building\n Brokerage Firm \n (MGS Group)"]
+    %% idx["fas:fa-server\nData Provider\n (IDX Broker LLC)"]
+    %% mls[("fas:fa-list\n Listing Service \n (MLS PIN Inc.)")]
+    %% ext["fas:fa-share-alt\n Aggregate Services\n (Zillow)"]
+
+    agt["Agent/Broker/Realtor"]
+    mgs["MGS Group"]
+    idx["Middleman Service\n (IDX Broker LLC)"]
+    mls["Listing Service \n (MLS PIN)"]
+    ext["Aggregate Services (Zillow)"]
+
+
+    agt-. work for .-> mgs
+    mgs-. act as .->agt
+
+    agt-- author listings -->mls
+
+
+    mls-->idx
+
+    mgs-->idx
+    idx-->mgs
+
+
+    mls-->ext
+    idx-->ext
+
+```
+</div>
+
+
+---
+class: text-center
+clicks: 4
+---
+
+## I thought this was about JavaScript APIs?
+
+<div class="mt-1/5" v-if="$slidev.nav.clicks === 1">
+
+  ### Oh..
+</div>
+
+<div class="mt-1/5" v-if="$slidev.nav.clicks === 2">
+
+  ### yeah let's get back to that
+</div>
+
+<v-click at="3">
+
+```mermaid {securityLevel: 'loose', scale: 0.7, flowchart: { nodeSpacing: 1 }, themeCSS: '.cluster-label .nodeLabel { position: relative; top: -5px }' }
+flowchart
+    %% agt["fas:fa-user-tie\n Agent/Realtor®"]
+    %% mgs["fas:fa-building\n Brokerage Firm \n (MGS Group)"]
+    %% idx["fas:fa-server\nData Provider\n (IDX Broker LLC)"]
+    %% mls[("fas:fa-list\n Listing Service \n (MLS PIN Inc.)")]
+    %% ext["fas:fa-share-alt\n Aggregate Services\n (Zillow)"]
+
+    agt["Agent/Broker/Realtor"]
+    mgs["MGS Group"]
+    idx["Middleman Service\n (IDX Broker LLC)"]
+    mls[("Listing Service \n (MLS PIN)")]
+    ext["Aggregate Services (Zillow)"]
+
+
+    agt<-.-> mgs
+
+    agt-- author listings -->mls
+
+
+    mls-->idx
+
+    idx-- authored\n listing data -->mgs
+    mgs-- supplement data\n for authored listings -->idx
+
+
+    mls-->ext
+    idx-->ext
+
+    subgraph etc[ ]
+        agt
+        mls
+        ext
+    end
+    style etc fill:none,stroke:none,stroke-width:2px
+
+    subgraph dev[Developer Purview\n]
+        mgs
+        idx
+    end
+    style dev fill:none,stroke:#f66,stroke-width:2px,stroke-dasharray: 5 5,color:#f66
+
+```
+</v-click>
+
+
+---
+
+# Let's fetch some MLS listings!
+
+<div class="grid grid-cols-3 gap-2 text-sm" style="--slidev-code-font-size: 8px">
+  <div v-click>
+
+  Utopian GraphQL?
+
+  ```vue
+  <script setup>
+  import { useQuery } from '@vue/apollo-composable'
+  import gql from 'graphql-tag'
+
+  const { result } = useQuery(gql`
+    query getListings {
+      listings {
+        id
+        title
+        status
+        price
+      }
+    }
+  `)
+  </script>
+  ```
+  </div>
+  <div v-click>
+
+  Mundane JSON API?
+
+  ```vue
+  <script setup>
+  const listings = reactive({
+      data: [],
+      filteredData: computed(() => processData()),
+    });
+  const fetchListings = async () => {
+      axios
+        .get("https://api.idxbroker.com/mls/api/v2/boston")
+        .then((response) => {
+          listings.data = response.data.results
+        });
+    };
+  </script>
+  ```
+  </div>
+  <div v-click>
+
+  Undocumented XML Schemas?
+
+  ```xml
+  <?xml version="1.0" encoding="utf-8"?>
+  <!DOCTYPE RateResponse SYSTEM "https://api.idxbroker.com/exec/mls/MlsService.dtd"
+  ><RateResponse> <Status>OK</Status> <Order sequence="1">
+  <Listings><Listing method="PUBLIC"> <City>Boston</City>
+  <Status isValid="YES" active="YES" PPX="NO">On Sale</Status>
+  <MlsCode>PMFS</MlsCode> <Cost currency="USD" converted="NO"
+  originalCurrency="USD" originalCost="3999542.90">3999542.90</Cost> </Listing>
+  <Listing method="PUBLIC"> <City>Cambridge</City>
+  <Status isValid="YES" active="YES" PPX="NO">On Sale</Status>
+  <MlsCode>PMFS</MlsCode> <Cost currency="USD" converted="NO"
+  originalCurrency="USD" originalCost="74828274.90">74828274.90</Cost> </Listing>
+  ```
+  </div>
+</div>
+
+
+---
+
+# Nothing.
+
+
+<div class="mt-20 w-1/3 mx-auto">
+
+```js
+/**
+
+
+  TODO 🎉
+
+
+*/
+```
+</div>
+
+---
+layout: image-right
+image: https://images.unsplash.com/photo-1566397000179-d83e7535349d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2150&q=80
+---
+
+# IDX Usage Restrictions
+
+<v-clicks>
+
+1. MGS does not have the right to forward/proxy IDX feeds
+2. NAR also explicitly forbids web scraping (except search engines)
+3. IDX Broker does not provide a complete API
+
+</v-clicks>
+
+<div class="mt-16" v-click>
+
+### Where there's a will...
+</div>
+
+---
+layout: image-right
+image: https://images.unsplash.com/photo-1604265497895-9ff77ad70e7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80
+---
+
+# There's iFrame 🖼
+(sorry)
+
+<v-click>
+
+Still the most popular way to display MLS listings on the web:
+</v-click>
+
+<v-clicks>
+
+- ready-built solutions
+- minimal technical overhead
+- compatible with most sites to some degree
+- limits ecosystem fragmentation
+</v-clicks>
+
+---
+layout: image-right
+image: https://images.unsplash.com/photo-1587929359039-e1b1dfe314df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3432&q=80
+---
+
+# Downsides/Challenges
+
+(in brief)
+
+<v-clicks>
+
+Impact on SEO
+
+</v-clicks>
+<v-clicks>
+
+  - content within an `iframe` aren't attributed to the host container
+  - improper use of meta tags between `iframe` and host can lead to SEO disaster
+</v-clicks>
+
+<v-clicks>
+
+Impact on UX
+</v-clicks>
+<v-clicks>
+
+- ready-built solutions break visual continuity
+- scrollbars in `window` and `iframe` viewports will confuse users
+- gaps in history & state tracking
+</v-clicks>
+
+
+---
+layout: two-cols
+---
+
+# The Result
+The component that was promised
+<v-click>
+
+```vue {all|15}
+<!-- pages/idx/_.vue -->
+
+<template>
+  <header>
+    <SearchBar />
+    <DynamicPageHeader />
+  </header>
+
+  <!-- iFrame goes here -->
+  <IdxFrame />
+
+</template>
+
+<script setup>
+const idxFrame = useIdxFrameMessageLayer(frame)
+const { url, pageType, heading } = useIdxFrameCtx(idxFrame)
+</script>
+```
+</v-click>
+
+::right::
+
+<div class="mt-24" v-click>
+
+#### `useIdxFrameMessageLayer()`
+Custom communication layer for Vue-bound iFrames
+</div>
+<v-clicks>
+
+- utilizes the `contentWindow.postMessage()` API
+- watches for `message` events
+- emits the iframe's current URL, loading status, scroll height, and other page data, 
+- attempts to gracefully mask timeouts, errors, and invalid states
+</v-clicks>
+
+---
+
+# Going Deeper
+<v-click>
+
+```js {monaco} {maxHeight:10}
+// somewhere in the iframe's script tags
+
+const root = window.self === window.top
+document.documentElement.classList.add('app-' + root ? 'root' : 'frame')
+function frameSetup () {
+  // 1. send initial data burst to parent
+  window.parent.postMessage(initialData, '*')
+
+  // 2. Use Proxy for reporting changes with Vue-esque reactivity model
+  const state = new Proxy({ size, url, status },  proxyReportingConfig)
+
+  // 3. Create message event handler to allow execution of some actions
+  const actions = {
+    'css:inject': css => appendCss(css, true),
+    'stylesheet:inject': src => appendCss(src, false),
+  }
+
+  // 4. Live document size updates with ResizeObserver
+  const sizeWatcher = new ResizeObserver((entries) => {}
+
+  // 5. Fixing IDX-injected content
+  fixInsecureLinks() // force all links to use HTTPS
+  fixPageActions()   // route form submissions to HTTPS
+  purifySrcs()       // remove certain redundant libraries
+
+  // 6. Page-specific data reporting
+  getIdxPageInfo()
+
+  // 7. Proactive page navigation reporting
+  document.addEventListener('click', (e) => {})
+}
+```
+</v-click>
+
+
+---
+
+# Bonus goodies
+- Custom build system for the iframe HTML wrapper
+
+  ```json
+  {
+    "scripts": {
+      "build:idx": "NUXT_ENV_IDX=true NUXT_HOST='https://domain.com' nuxt generate --target='static'",
+    }
+  }
+  ```
+- Advanced page type prediction using query parameter and past states
+- Custom search bar that routes to different IDX search endpoints
+- WordPress integration for featured properties
+- WPGraphQL abstraction layer page content
+- Custom REST endpoints too!
